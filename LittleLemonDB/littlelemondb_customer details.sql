@@ -19,24 +19,30 @@
 -- Table structure for table `customer details`
 --
 
-DROP TABLE IF EXISTS `customer details`;
+DROP TABLE IF EXISTS `Customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `customer details` (
-  `id` int NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `phone number` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`Customers` (
+  `CustomerID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Address` VARCHAR(45) NOT NULL,
+  `Phone` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(100) NOT NULL,
+  `City` VARCHAR(45) NOT NULL,
+  `State` VARCHAR(45) NOT NULL,
+  `Country` VARCHAR(45) NULL,
+  PRIMARY KEY (`CustomerID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `customer details`
 --
 
-LOCK TABLES `customer details` WRITE;
-/*!40000 ALTER TABLE `customer details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customer details` ENABLE KEYS */;
+LOCK TABLES `Customers` WRITE;
+/*!40000 ALTER TABLE ` Customers` DISABLE KEYS */;
+/*!40000 ALTER TABLE ` Customers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

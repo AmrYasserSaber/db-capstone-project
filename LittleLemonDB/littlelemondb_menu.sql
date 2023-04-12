@@ -19,25 +19,28 @@
 -- Table structure for table `menu`
 --
 
-DROP TABLE IF EXISTS `menu`;
+DROP TABLE IF EXISTS `Menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `menu` (
-  `cuisine` varchar(45) NOT NULL,
-  `starter` varchar(45) NOT NULL,
-  `course` varchar(45) NOT NULL,
-  ` drink` varchar(45) NOT NULL,
-  ` dessert` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`Menu` (
+  `MenuID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Cuisine` VARCHAR(45) NOT NULL,
+  `Starter` BIT(1) NOT NULL,
+  `Drink` BIT(1) NOT NULL,
+  `Course` BIT(1) NOT NULL,
+  `Desert` BIT(1) NOT NULL,
+  PRIMARY KEY (`MenuID`))
+ENGINE = InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `Menu`
 --
 
-LOCK TABLES `menu` WRITE;
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+LOCK TABLES `Menu` WRITE;
+/*!40000 ALTER TABLE `Menu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

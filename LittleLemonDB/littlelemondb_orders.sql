@@ -16,28 +16,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `orders`
+-- Table structure for table `Orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `Orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orders` (
-  `id` int NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `quantity` int NOT NULL,
-  `total cost` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`Orders` (
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
+  `Date` DATE NOT NULL,
+  `Quantity` INT NOT NULL,
+  `Total` DECIMAL(10,2) NOT NULL,
+  `CustomerID` INT NOT NULL,
+  `MenuID` INT NOT NULL,
+  PRIMARY KEY (`OrderID`),
+  INDEX `customer_id_fk_idx` (`CustomerID` ASC) VISIBLE,
+  INDEX `menu_id_fk_idx` (`MenuID` ASC) VISIBLE,
+  CONSTRAINT `customer_id_fk`
+    FOREIGN KEY (`CustomerID`)
+    REFERENCES `littlelemon`.`Customers` (`CustomerID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `menu_id_fk`
+    FOREIGN KEY (`MenuID`)
+    REFERENCES `littlelemon`.`Menu` (`MenuID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orders`
+-- Dumping data for table `Orders`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+LOCK TABLES `Orders` WRITE;
+/*!40000 ALTER TABLE `Orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -16,27 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bookings`
+-- Table structure for table `Bookings`
 --
 
-DROP TABLE IF EXISTS `bookings`;
+DROP TABLE IF EXISTS `Bookings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bookings` (
-  `id` int NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `table number` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`Bookings` (
+  `BookingID` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `Date` DATE NOT NULL,
+  `TableNumber` INT NOT NULL,
+  `CustomerID` INT NOT NULL,
+  PRIMARY KEY (`BookingID`),
+  INDEX `customer_id_fk_idx` (`CustomerID` ASC) VISIBLE,
+  CONSTRAINT `customer_id_fk`
+    FOREIGN KEY (`CustomerID`)
+    REFERENCES `littlelemon`.`Customers` (`CustomerID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = big5;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bookings`
+-- Dumping data for table `Bookings`
 --
 
-LOCK TABLES `bookings` WRITE;
-/*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
+LOCK TABLES `Bookings` WRITE;
+/*!40000 ALTER TABLE `Bookings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

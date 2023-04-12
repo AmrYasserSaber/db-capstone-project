@@ -16,19 +16,19 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `staff information`
+-- Table structure for table `Staff`
 --
 
-DROP TABLE IF EXISTS `staff information`;
+DROP TABLE IF EXISTS `Staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `staff information` (
-  `id` int NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `role` varchar(45) NOT NULL,
-  `salary` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`Staff` (
+  `StaffID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Salary` INT NULL,
+  `Role` VARCHAR(45) NULL,
+  PRIMARY KEY (`StaffID`))
+ENGINE = InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,8 +36,8 @@ CREATE TABLE `staff information` (
 --
 
 LOCK TABLES `staff information` WRITE;
-/*!40000 ALTER TABLE `staff information` DISABLE KEYS */;
-/*!40000 ALTER TABLE `staff information` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Staff` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

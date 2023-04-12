@@ -16,28 +16,41 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `order delivery status`
+-- Table structure for table `OrderDeliveryStatus`
 --
 
-DROP TABLE IF EXISTS `order delivery status`;
+DROP TABLE IF EXISTS `OrderDeliveryStatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order delivery status` (
-  ` delivery date` date NOT NULL,
-  `status` varchar(45) NOT NULL,
-  `Orders_id` int NOT NULL,
-  KEY `fk_Order delivery status_Orders_idx` (`Orders_id`),
-  CONSTRAINT `fk_Order delivery status_Orders` FOREIGN KEY (`Orders_id`) REFERENCES `little_lemon`.`orders` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `littlelemon`.`OrderDeliveryStatus` (
+  `DeliveryID` INT NOT NULL AUTO_INCREMENT,
+  `Date` DATE NULL,
+  `Status` VARCHAR(45) NULL,
+  `OrderID` INT NOT NULL,
+  `StaffID` INT NOT NULL,
+  PRIMARY KEY (`DeliveryID`),
+  INDEX `irder_id_fk_idx` (`OrderID` ASC) VISIBLE,
+  INDEX `staff_id_fk_idx` (`StaffID` ASC) VISIBLE,
+  CONSTRAINT `irder_id_fk`
+    FOREIGN KEY (`OrderID`)
+    REFERENCES `littlelemon`.`Orders` (`OrderID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `staff_id_fk`
+    FOREIGN KEY (`StaffID`)
+    REFERENCES `littlelemon`.`Staff` (`StaffID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order delivery status`
+-- Dumping data for table `OrderDeliveryStatus`
 --
 
-LOCK TABLES `order delivery status` WRITE;
-/*!40000 ALTER TABLE `order delivery status` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order delivery status` ENABLE KEYS */;
+LOCK TABLES `OrderDeliveryStatus` WRITE;
+/*!40000 ALTER TABLE `OrderDeliveryStatus` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OrderDeliveryStatus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
